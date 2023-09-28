@@ -1,12 +1,13 @@
 package cn.metaq.resource.server.web;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.ObjectUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author zantang
@@ -16,24 +17,16 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @Log4j2
+@RequestMapping("users")
 public class UserController {
 
     private static final String ACCESS_TOKEN = "accessToken";
 
-    @Autowired
-    private HttpServletRequest request;
-
-    @GetMapping("user")
-    public String user() {
-
-        String accessToken = request.getParameter(ACCESS_TOKEN);
-
-        if (ObjectUtils.isEmpty(accessToken)) {
-            accessToken = request.getHeader(ACCESS_TOKEN);
-        }
-
-        log.info("accessToken:{}", accessToken);
-
-        return "admin";
+    @GetMapping( "/info")
+    public Map<String, Object> getUser() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", "xxx");
+        return map;
     }
+
 }

@@ -1,0 +1,17 @@
+server:
+  port: 9003
+spring:
+  application:
+    name: resource
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: http://127.0.0.1:9000
+          jwk-set-uri: http://127.0.0.1:9000/oauth2/jwks
+feign:
+  client:
+    config:
+      default: #??????
+        connect-timeout: 10000
+        read-timeout: 10000

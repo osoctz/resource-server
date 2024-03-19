@@ -12,6 +12,6 @@ spring:
 feign:
   client:
     config:
-      default: #??????
+      default:
         connect-timeout: 10000
         read-timeout: 10000
